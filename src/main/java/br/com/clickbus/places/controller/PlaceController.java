@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.clickbus.places.dto.PlaceDto;
 import br.com.clickbus.places.service.IPlaceService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/topicos")
@@ -31,6 +32,7 @@ public class PlaceController {
 	private IPlaceService placeService;
 
 	@GetMapping
+	@ApiOperation(value = "Search places by name")
 	public Page<PlaceDto> lista(@RequestParam(required = false) String placeName,
 			@PageableDefault(sort = "creationDate", direction = Direction.DESC, page = 0, size = 10) Pageable pageable) {
 
@@ -39,6 +41,7 @@ public class PlaceController {
 
 	@PutMapping
 	@Transactional
+	@ApiOperation(value = "Update a place")
 	public ResponseEntity<PlaceDto> update(@RequestBody @Valid PlaceDto placeDto) {
 		try {
 			placeDto = placeService.updatePlace(placeDto);
@@ -51,6 +54,7 @@ public class PlaceController {
 
 	@DeleteMapping("/{id}")
 	@Transactional
+	@ApiOperation(value = "Remove a place")
 	public ResponseEntity<?> remover(@PathVariable Long id) {
 		try {
 			placeService.removePlace(id);
@@ -63,6 +67,7 @@ public class PlaceController {
 
 	@PostMapping
 	@Transactional
+	@ApiOperation(value = "Save a place")
 	public ResponseEntity<PlaceDto> save(@RequestBody PlaceDto placeDto) {
 		placeDto = placeService.savePlace(placeDto);
 
