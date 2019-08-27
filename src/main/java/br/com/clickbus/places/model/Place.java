@@ -13,21 +13,21 @@ import javax.persistence.Id;
  */
 @Entity
 public class Place {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String slug;
-	
+
 	private String city;
-	
+
 	private String state;
-	
+
 	private LocalDateTime creationDate;
-	
+
 	private LocalDateTime updateDate;
 
 	public Long getId() {
@@ -69,7 +69,7 @@ public class Place {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
 	public LocalDateTime getCreationDate() {
 		return creationDate;
 	}
@@ -109,5 +109,5 @@ public class Place {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 }
