@@ -9,5 +9,4 @@ public class PlacesCrudForClickbusApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PlacesCrudForClickbusApplication.class, args);
 	}
-
 }
