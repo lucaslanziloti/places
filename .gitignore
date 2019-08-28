@@ -25,4 +25,9 @@ hs_err_pid*
 .classpath
 .project
 .settings/
+
+### Java-Web ###
+## ignoring target file
 target/
+
+

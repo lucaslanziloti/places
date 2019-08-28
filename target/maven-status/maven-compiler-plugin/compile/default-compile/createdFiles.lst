@@ -1,9 +1,0 @@
-br/com/clickbus/places/model/Place.class
-br/com/clickbus/places/service/IPlaceService.class
-br/com/clickbus/places/controller/PlaceController.class
-br/com/clickbus/places/service/impl/PlaceServiceImpl.class
-br/com/clickbus/places/ServletInitializer.class
-br/com/clickbus/places/PlacesCrudForClickbusApplication.class
-br/com/clickbus/places/dto/PlaceDto.class
-br/com/clickbus/places/SwaggerConfig.class
-br/com/clickbus/places/repository/PlaceRepository.class
