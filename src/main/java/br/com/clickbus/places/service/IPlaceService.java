@@ -13,5 +13,7 @@ public interface IPlaceService {
 
 	public void removePlace(Long id);
 
-	public Page<PlaceDto> lista(String placeName, Pageable pageable);
+	public Page<PlaceDto> list(String placeName, Pageable pageable);
+
+	public PlaceDto listById(Long id);
 }

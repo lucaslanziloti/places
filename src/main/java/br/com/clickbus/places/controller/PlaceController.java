@@ -25,18 +25,24 @@ import br.com.clickbus.places.service.IPlaceService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/topicos")
+@RequestMapping("/places")
 public class PlaceController {
 
 	@Autowired
 	private IPlaceService placeService;
 
 	@GetMapping
-	@ApiOperation(value = "Search places by name")
-	public Page<PlaceDto> lista(@RequestParam(required = false) String placeName,
+	@ApiOperation(value = "Search places by name (Using paginator)")
+	public Page<PlaceDto> list(@RequestParam(required = false) String placeName,
 			@PageableDefault(sort = "creationDate", direction = Direction.DESC, page = 0, size = 10) Pageable pageable) {
 
-		return placeService.lista(placeName, pageable);
+		return placeService.list(placeName, pageable);
+	}
+
+	@GetMapping("/{id}")
+	@ApiOperation(value = "Search places by id")
+	public PlaceDto listById(@PathVariable Long id) {
+		return placeService.listById(id);
 	}
 
 	@PutMapping

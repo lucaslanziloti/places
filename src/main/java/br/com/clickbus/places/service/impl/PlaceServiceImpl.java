@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import br.com.clickbus.places.dto.PlaceDto;
 import br.com.clickbus.places.model.Place;
@@ -24,6 +25,17 @@ public class PlaceServiceImpl implements IPlaceService{
 
 	@Autowired
 	private ModelMapper modelMapper;
+
+	@Override
+	public PlaceDto listById(Long id) {
+		Optional<Place> optional = placeRepository.findById(id);
+
+		if (optional.isPresent()) {
+			return convertToDTO(optional.get());
+		} else {
+			throw new EntityNotFoundException();
+		}
+	}
 
 	public PlaceDto updatePlace(PlaceDto placeDto) {
 		Optional<Place> optional = placeRepository.findById(placeDto.getId());
@@ -42,8 +54,14 @@ public class PlaceServiceImpl implements IPlaceService{
 		}
 	}
 
-	public Page<PlaceDto> lista(String placeName, Pageable pageable) {
-		Page<Place> places = placeRepository.findByNameContaining(placeName, pageable);
+	public Page<PlaceDto> list(String placeName, Pageable pageable) {
+		Page<Place> places;
+		
+		if(StringUtils.isEmpty(placeName)) {
+			places = placeRepository.findAll(pageable);
+		} else {
+			places = placeRepository.findByNameContaining(placeName, pageable);
+		}
 		
 		return places.map(this::convertToDTO);
 	}

@@ -1,5 +1,6 @@
 /home/llanziloti/Documentos/Testes/places/src/main/java/br/com/clickbus/places/repository/PlaceRepository.java
 /home/llanziloti/Documentos/Testes/places/src/main/java/br/com/clickbus/places/controller/PlaceController.java
+/home/llanziloti/Documentos/Testes/places/src/main/java/br/com/clickbus/places/SwaggerConfig.java
 /home/llanziloti/Documentos/Testes/places/src/main/java/br/com/clickbus/places/PlacesCrudForClickbusApplication.java
 /home/llanziloti/Documentos/Testes/places/src/main/java/br/com/clickbus/places/dto/PlaceDto.java
 /home/llanziloti/Documentos/Testes/places/src/main/java/br/com/clickbus/places/model/Place.java
