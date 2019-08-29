@@ -37,6 +37,7 @@ public class PlaceServiceImpl implements IPlaceService{
 		}
 	}
 
+	@Override
 	public PlaceDto updatePlace(PlaceDto placeDto) {
 		Optional<Place> optional = placeRepository.findById(placeDto.getId());
 
@@ -54,6 +55,7 @@ public class PlaceServiceImpl implements IPlaceService{
 		}
 	}
 
+	@Override
 	public Page<PlaceDto> list(String placeName, Pageable pageable) {
 		Page<Place> places;
 		
