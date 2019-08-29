@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,8 +42,14 @@ public class PlaceController {
 
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Search places by id")
-	public PlaceDto listById(@PathVariable Long id) {
-		return placeService.listById(id);
+	public ResponseEntity<PlaceDto> listById(@PathVariable Long id) {
+		try {
+			PlaceDto placeDto = placeService.listById(id);
+
+			return ResponseEntity.ok(placeDto);
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 	@PutMapping
@@ -77,6 +84,6 @@ public class PlaceController {
 	public ResponseEntity<PlaceDto> save(@RequestBody PlaceDto placeDto) {
 		placeDto = placeService.savePlace(placeDto);
 
-		return ResponseEntity.ok(placeDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(placeDto);
 	}
 }
