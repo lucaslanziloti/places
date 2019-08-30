@@ -11,10 +11,14 @@ This project it's documented by swagger, after executing the project, access thi
 ## Tests
 There are Unit and Integration test, to run then just execute: ``` mvn clean install```
 
-###Stacks
+## Stacks
 - Spring Boot
 - Spring data
 - H2 Database
 - Junit
 - Lombok
 - Swagger
+
+
+## Testing environment
+This project is hosted in Heroku, access link: [Heroku project clickbus-place](https://clickbus-place.herokuapp.com/swagger-ui.html).
