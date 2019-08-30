@@ -39,6 +39,11 @@ public class PlaceServiceImpl implements IPlaceService{
 
 	@Override
 	public PlaceDto updatePlace(PlaceDto placeDto) {
+		Optional.of(placeDto)
+			.map(PlaceDto::getId)
+			.filter(id -> id > 0)
+			.orElseThrow(() -> new IllegalStateException("Id should be a valid number."));
+		
 		Optional<Place> optional = placeRepository.findById(placeDto.getId());
 
 		if (optional.isPresent()) {

@@ -42,7 +42,7 @@ public class PlaceController {
 
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Search places by id")
-	public ResponseEntity<PlaceDto> listById(@PathVariable Long id) {
+	public ResponseEntity<PlaceDto> findById(@PathVariable Long id) {
 		try {
 			PlaceDto placeDto = placeService.listById(id);
 
